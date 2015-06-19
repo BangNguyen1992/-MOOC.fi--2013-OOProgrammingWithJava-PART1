@@ -33,4 +33,35 @@ public class Money {
         return euros + "." + zero + cents + "e";
     }
 
+    public Money plus(Money added) {
+        int euroSum = euros + added.euros();
+        int centSum = cents + added.cents();
+ 
+        if (centSum > 99) {
+            centSum -= 100;
+            euroSum++;
+        }
+ 
+        return new Money(euroSum, centSum);
+    }
+ 
+    public boolean less(Money compared) {
+        return (100 * euros + cents) < (100 * compared.euros() + compared.cents());
+    }
+ 
+    public Money minus(Money decremented) {
+        int euroDifference = euros - decremented.euros();
+        int centDifference = cents - decremented.cents();
+ 
+        if (centDifference < 0) {
+            centDifference += 100;
+            euroDifference--;
+        }
+ 
+        if (euroDifference < 0) {
+            return new Money(0, 0);
+        }
+ 
+        return new Money(euroDifference, centDifference);
+    }
 }
