@@ -12,7 +12,7 @@ public class Variance {
     
     // Copy here average from exercise 64 
     public static double average(ArrayList<Integer> list) {
-        double avg = sum(list)*1.0 / list.size();
+        double avg = (double) sum(list) / list.size();
         return avg;
     }
 
@@ -21,7 +21,7 @@ public class Variance {
         double avg = average(list);
         double var = 0;
         for (int i : list) {
-            var += Math.pow((i*1.0) - avg, 2);
+            var += (double)Math.pow((i) - avg, 2);
         }
         var /= (list.size()-1); 
         return var;
